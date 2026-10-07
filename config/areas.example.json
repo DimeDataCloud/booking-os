@@ -1,0 +1,46 @@
+{
+  "mitte": {
+    "label": "Mitte",
+    "city": "Berlin",
+    "state": "BE",
+    "bbox": [
+      52.505,
+      13.365,
+      52.54,
+      13.43
+    ]
+  },
+  "kreuzberg": {
+    "label": "Kreuzberg",
+    "city": "Berlin",
+    "state": "BE",
+    "bbox": [
+      52.485,
+      13.38,
+      52.505,
+      13.45
+    ]
+  },
+  "friedrichshain": {
+    "label": "Friedrichshain",
+    "city": "Berlin",
+    "state": "BE",
+    "bbox": [
+      52.5,
+      13.43,
+      52.525,
+      13.48
+    ]
+  },
+  "neukolln": {
+    "label": "Neukölln",
+    "city": "Berlin",
+    "state": "BE",
+    "bbox": [
+      52.46,
+      13.41,
+      52.49,
+      13.46
+    ]
+  }
+}

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<title>Booking OS</title>
+<meta name="theme-color" content="#07080b">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icon.svg">
+<link rel="stylesheet" href="/css/app.css">
+<script type="importmap">
+{ "imports": { "three": "/vendor/three.module.js", "three/addons/controls/OrbitControls.js": "/vendor/OrbitControls.js" } }
+</script>
+</head>
+<body>
+<div class="bar-load" id="loadbar"></div>
+<div id="app">
+  <nav class="side">
+    <div class="brand">
+      <div class="mark" id="artistMark">BO</div>
+      <div><b>Booking OS</b><span id="artistName"></span></div>
+    </div>
+    <div id="navlinks"></div>
+    <div class="nav-sep"></div>
+    <div class="navlink" data-route="artist"><span class="ic">★</span> Artist / EPK</div>
+    <div class="navlink" data-route="settings"><span class="ic">⚙</span> Settings</div>
+    <div class="nav-foot">
+      <div><span class="live-dot off" id="liveDot"></span><span id="liveText">connecting…</span></div>
+      <div style="margin-top:6px"><a href="/api/logout" id="logout">Sign out</a></div>
+    </div>
+  </nav>
+
+  <main id="main">
+    <div class="topbar">
+      <div>
+        <h1 id="title">Tonight</h1>
+        <div class="sub" id="subtitle"></div>
+      </div>
+      <div class="spacer"></div>
+      <div id="topActions" class="row"></div>
+    </div>
+    <div class="view" id="view"><div class="empty"><span class="spin"></span></div></div>
+  </main>
+</div>
+
+<div class="mobnav" id="mobnav"></div>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer"></aside>
+<div class="modal" id="modal"></div>
+<div id="toasts"></div>
+
+<script type="module" src="/js/app.js"></script>
+<script>if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(() => {});</script>
+</body>
+</html>

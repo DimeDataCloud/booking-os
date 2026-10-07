@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sign in — Booking OS</title>
+<meta name="theme-color" content="#07080b">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+<div class="login-wrap">
+  <form class="login-card" id="f">
+    <div class="mark">BO</div>
+    <h1>Booking OS</h1>
+    <p class="sub">Venue bookings, pipeline and money in one place</p>
+    <label class="f"><span>Email</span><input type="email" id="email" autocomplete="username" required autofocus></label>
+    <label class="f"><span>Password</span><input type="password" id="pw" autocomplete="current-password" required></label>
+    <button class="btn primary" style="width:100%;justify-content:center" id="go">Sign in</button>
+    <div class="err-msg" id="err"></div>
+  </form>
+</div>
+<script>
+const f = document.getElementById('f'), err = document.getElementById('err'), go = document.getElementById('go');
+f.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  err.textContent = ''; go.disabled = true; go.textContent = 'Checking…';
+  try {
+    const res = await fetch('/api/login', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: document.getElementById('email').value, password: document.getElementById('pw').value })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Sign in failed');
+    location.href = '/';
+  } catch (e) {
+    err.textContent = e.message;
+    go.disabled = false; go.textContent = 'Sign in';
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "booking-os",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "description": "Booking CRM + venue lead generator for DJ and artist management",
+  "scripts": {
+    "start": "node server/index.js",
+    "discover": "node server/discover-cli.js"
+  },
+  "engines": { "node": ">=22" }
+}
