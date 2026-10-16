@@ -76,8 +76,8 @@ No `npm install`. The first boot seeds **fictional demo data**: 24 made-up venue
 example areas, six bookings and the default rules and templates. The rules create their first
 tasks straight away. Set `DEMO_SEED=0` to start empty.
 
-Sign in as `manager@example.com` / `changeme2026`, or set `ADMIN_EMAIL` and `ADMIN_PASSWORD`
-before the first boot. Then fill in **Artist / EPK**.
+Set `ADMIN_EMAIL` and `ADMIN_PASSWORD` before the first boot. If you don't, the seeded
+`manager@example.com` account gets a random password that is printed once in the server log. Then fill in **Artist / EPK**.
 
 With Docker:
 
