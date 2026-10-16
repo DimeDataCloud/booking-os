@@ -239,8 +239,10 @@ const DEFAULT_AUTOMATIONS = [
 export function seed() {
   const seededUsers = db.prepare('SELECT COUNT(*) c FROM users').get().c;
   if (!seededUsers) {
-    const pw = process.env.ADMIN_PASSWORD || 'changeme2026';
-    if (!process.env.ADMIN_PASSWORD) console.warn('[auth] ADMIN_PASSWORD not set: seeded manager uses the default password, change it after first login');
+    // No shared default password: without ADMIN_PASSWORD a random one is generated and printed once.
+    const generated = !process.env.ADMIN_PASSWORD;
+    const pw = process.env.ADMIN_PASSWORD || randomBytes(12).toString('base64url');
+    if (generated) console.warn(`[auth] ADMIN_PASSWORD not set: seeded manager password is ${pw} (shown once, change it after first login)`);
     db.prepare('INSERT INTO users (email,name,role,pw,created_at) VALUES (?,?,?,?,?)')
       .run((process.env.ADMIN_EMAIL || 'manager@example.com').toLowerCase().trim(), process.env.ADMIN_NAME || 'Manager', 'manager', hashPw(pw), now());
   }
